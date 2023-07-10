@@ -24,7 +24,7 @@ signed main(){
         cout << -1;
         return 0;
     }
-    for(x = 1; x <= n; x++){
+    for(x = sqrt(n); x >= 1; x--){
         if(x * x + S(x) * x == n){
             cout << x;
             return 0;
