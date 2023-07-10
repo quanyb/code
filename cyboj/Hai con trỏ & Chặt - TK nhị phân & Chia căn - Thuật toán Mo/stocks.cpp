@@ -1,4 +1,4 @@
-//securities
+//stocks
 #include <bits/stdc++.h>
 #define ll long long
 #define Vani"task"
