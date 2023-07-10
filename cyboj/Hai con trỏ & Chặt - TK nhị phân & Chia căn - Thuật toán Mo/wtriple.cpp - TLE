@@ -1,0 +1,55 @@
+//
+#include <bits/stdc++.h>
+
+using namespace std;
+
+const int nmax = 1e5 + 7;
+
+long long n, m, q;
+long long a[nmax], b[nmax], c[nmax];
+long long res;
+
+long long sum(long long a, long long b, long long c) {
+	return (a + b) * (b + c);
+}
+
+void GetInfo() {
+	cin >> n >> m >> q;
+	for (int i = 1; i <= n; i++)
+		cin >> a[i];
+	for (int i = 1; i <= m; i++)
+		cin >> b[i];
+	for (int i = 1; i <= q; i++)
+		cin >> c[i];
+	sort(a + 1, a + 1 + n);
+	sort(b + 1, b + 1 + m);
+	sort(c + 1, c + 1 + q);
+}
+
+void Process() {
+	int j = 1;
+	while (j <= m) {
+		int p = upper_bound(a + 1, a + 1 + n, b[j]) - a;
+		int w = upper_bound(c + 1, c + 1 + q, b[j]) - c;
+		for (int i = 1; i <= p - 1; i++)
+			for (int k = 1; k <= w - 1; k++) {
+				res = (res + sum(a[i], b[j], c[k])) % 1000000007;
+			}
+		j++;
+	}
+	cout << res;
+}
+
+int main() {
+	cin.tie(0)->sync_with_stdio(false);
+	if (fopen("wtriple.inp", "r")) {
+		freopen("wtriple.inp", "r", stdin);
+		freopen("wtriple.out", "w", stdout);
+	}
+	long long Tests = 1;
+	while (Tests--) {
+		GetInfo();
+		Process();
+	}
+	return 0;
+}
